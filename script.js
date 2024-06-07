@@ -1,27 +1,58 @@
 const input = document.getElementById("input");
 const btn = document.getElementById("button");
 
+btn.addEventListener("click", todo);
 
-
-btn.addEventListener("click", todo)
-
-function todo (){
+function todo() {
     if (input.value.trim() === "") {
         return; // Do nothing if input is empty
-      }
-    let node1 = document.createElement("h3");
-    node1.setAttribute( "class", "list");
-     let node3 = document.createTextNode(input.value);
-     node1.appendChild(node3);
+    }
 
-     console.log(node1)
-     document.getElementById("myList").appendChild(node1);
+    let todoItem = document.createElement("div");
+    todoItem.setAttribute("class", "todo-item");
 
-     input.value = ""; 
+    let textNode = document.createElement("span");
+    textNode.setAttribute("class", "list");
+    textNode.textContent = input.value;
+
+    let editBtn = document.createElement("button");
+    editBtn.textContent = "Edit";
+    editBtn.setAttribute("class", "edit-btn");
+    editBtn.addEventListener("click", () => editTodo(todoItem, textNode));
+
+    let deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "Delete";
+    deleteBtn.setAttribute("class", "delete-btn");
+    deleteBtn.addEventListener("click", () => deleteTodo(todoItem));
+
+    let button_div = document.createElement("div")
+    button_div.setAttribute("class", "button_div" )
+    todoItem.appendChild(textNode);
+    todoItem.appendChild(button_div)
+     button_div.appendChild(editBtn);
+    button_div.appendChild(deleteBtn);
+    
+
+    // todoItem.appendChild(editBtn);
+    // todoItem.appendChild(deleteBtn);
+
+    document.getElementById("myList").appendChild(todoItem);
+    input.value = "";
 }
 
 function clickOnEnter(event) {
     if (event.key === "Enter") {
-      todo();
+        todo();
     }
-  }
+}
+
+function editTodo(todoItem, textNode) {
+    let newText = prompt("Edit your todo:", textNode.textContent);
+    if (newText !== null && newText.trim() !== "") {
+        textNode.textContent = newText;
+    }
+}
+
+function deleteTodo(todoItem) {
+    todoItem.remove();
+}
