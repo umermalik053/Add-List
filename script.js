@@ -1,7 +1,12 @@
 const input = document.getElementById("input");
 const btn = document.getElementById("button");
 
+
+const deleteAllBtn = document.getElementById("delete-all-button");
+
 btn.addEventListener("click", todo);
+
+deleteAllBtn.addEventListener("click", deleteAllTodos);
 
 function todo() {
     if (input.value.trim() === "") {
@@ -56,3 +61,18 @@ function editTodo(todoItem, textNode) {
 function deleteTodo(todoItem) {
     todoItem.remove();
 }
+
+function deleteAllTodos() {
+   let verified = prompt("Type Password..............")
+   if (verified == "Malik") {
+     document.getElementById("myList").innerHTML = ""; 
+    }
+    else{
+      alert("Sorry your Password is incorrect! ")
+    }
+
+  
+}
+
+
+

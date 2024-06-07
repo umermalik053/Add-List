@@ -163,3 +163,29 @@ input:focus {
 } 
 
 
+
+
+#delete-all-button { /* Style for the Delete All button */
+    margin-top: 20px;
+    width: 50%;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 50px;
+    background-color: #dc3545;
+    color: white;
+    font-size: 20px;
+    box-shadow: 0 9px #999;
+}
+
+#delete-all-button:hover {
+    background-color: #c82333;
+    cursor: pointer;
+}
+
+#delete-all-button:active {
+    background-color: #a71d2a;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+
